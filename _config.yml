@@ -28,7 +28,8 @@ twitter_username: darthmaria
 github_username: mcseves
 
 # Build settings
-theme: minima
+# remove minima theme, now is a regular theme
+#theme: minima
 plugins:
   - jekyll-feed
 
