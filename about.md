@@ -1,4 +1,4 @@
-<h1> About me </hi>
+<h1> About me </h1>
 
 
 Here is some info about Maria
