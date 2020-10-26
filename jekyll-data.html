@@ -1,0 +1,48 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>using jakyll data</h1>
+    <h2>Post data</h2>
+    {% for post in site.posts %}
+        <p>Post title: {{post.title}}</p>
+        <p>Post date: {{post.date}}</p>
+    {% endfor %}
+
+    <h2>Page data</h2>
+    {% for page in site.pages %}
+        {% if page.title%}
+            <p>Page title: {{page.title}}</p>
+        {% endif %}
+    {% endfor %}
+
+    <h2>_config.yml</h2>
+    <p>Twitter username: {{site.twitter_username}}</p>
+
+    <h2>Latest post</h2>
+    {% for post in site.posts limit:1 %}
+        <p>{{post.title}}</p>
+    {% endfor %}
+
+
+    <h2>All other posts</h2>
+    {% for post in site.posts offset:1 %}
+        <p>{{post.title}}</p>
+    {% endfor %}
+
+    <h2>Posts with links</h2>
+    {% for post in site.posts %}
+        <p></p>
+        <a href="{{post.url}}">
+            {{post.title}}
+        </a>
+    {% endfor %}
+
+</body>
+</html>
