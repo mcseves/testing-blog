@@ -1,0 +1,29 @@
+items:
+  - title: Home
+    url: /index.html
+    so: 1
+    display: true
+    subitems: []
+  - title: About
+    url: /about.html
+    so: 3
+    display: true
+    subitems:
+      - title: Contact me
+        url: /contact.html
+        so: 1
+        display: true
+      - title: Portfolio
+        url: /portfolio.html
+        so: 2
+        display: true
+  - title: Posts
+    url: /posts.html
+    so: 2
+    display: true
+    subitems: []
+  - title: Sale
+    url: /sale.html
+    so: 1.5
+    display: true
+    subitems: []

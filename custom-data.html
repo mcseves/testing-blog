@@ -1,0 +1,72 @@
+---
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>using costume data</h1>
+
+    <h2>CSV File</h2>
+    {%for nav in site.data.navs %}
+        <p><strong>Title:</strong> {{nav.title}} - {{nav.url}}</p>
+    {%endfor%}
+
+    <h2>TSV File</h2>
+    {%for nav in site.data.navs-tsv %}
+    <p><strong>Title:</strong> {{nav.title}} - {{nav.url}}</p>
+    {%endfor%}
+
+    <h2>JSON File</h2>
+    {%for nav in site.data.navs-json.items %}
+    <p><strong>Title:</strong> {{nav.title}} - {{nav.url}}</p>
+    {%endfor%}
+    
+    <h2>YML File</h2>
+    {%for nav in site.data.navs-yml.items %}
+    <p><strong>Title:</strong> {{nav.title}} - {{nav.url}}</p>
+    {%endfor%}
+
+    <h2>YML one to many File</h2>
+    {%for nav in site.data.navs-yml-one-to-many.items %}
+    <p><strong>Title:</strong> {{nav.title}} - {{nav.url}}</p>
+    {%if nav.subitems%}
+    {%for subitem in nav.subitems %}
+    <p><strong>&nbsp;&nbsp;Subitem title:</strong> {{subitem.title}} - {{subitem.url}}</p>
+    {%endfor%}
+    {%endif%}
+    {%endfor%}
+
+    <h2>sort order</h2>
+    {% assign navs = site.data.navs-yml-sort-order.items | sort: "so" %}
+    {%for nav in navs %}
+        <p><strong>Title:</strong> {{nav.title}} - {{nav.url}}</p>
+        {%if nav.subitems%}
+            {% assign subitems = nav.subitems | sort: "so" %}
+            {%for subitem in subitems %}
+                <p><strong>&nbsp;&nbsp;Subitem title:</strong> {{subitem.title}} - {{subitem.url}}</p>
+            {%endfor%}
+        {%endif%}
+    {%endfor%}
+
+    <h2>display or hide</h2>
+    {% assign navs = site.data.navs-yml-display-item.items 
+    | sort: "so" 
+    | where: "display",true %}
+    {%for nav in navs %}
+    <p><strong>Title:</strong> {{nav.title}} - {{nav.url}}</p>
+    {%if nav.subitems%}
+    {% assign subitems = nav.subitems | sort: "so" | where: "display",true %}
+    {%for subitem in subitems %}
+    <p><strong>&nbsp;&nbsp;Subitem title:</strong> {{subitem.title}} - {{subitem.url}}</p>
+    {%endfor%}
+    {%endif%}
+    {%endfor%}
+
+</body>
+</html>
